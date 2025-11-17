@@ -1,3 +1,6 @@
 site_name: 碧海舟生的海^_^
 theme:
   name: material
+extra_javascript:
+  - js/extra.js
+  - js/mathjax.js
