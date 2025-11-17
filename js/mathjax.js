@@ -1,14 +1,13 @@
 window.MathJax = {
   tex: {
-    // 这是行内公式的定界符，我们同时启用了 \(...\) 和 $...$
-    inlineMath: [["\\("， "\\)"]， ["$"， "$"]]，
-    // 这是块级公式的定界符，我们同时启用了 \[...\] 和 $$...$$
-    displayMath: [["\\["， "\\]"]， ["$$"， "$$"]]，
-    processEscapes: true，
+    // 我们在这里明确启用了 $ 和 $$
+    inlineMath: [['$', '$'], ['\\(', '\\)']],
+    displayMath: [['$$', '$$'], ['\\[', '\\]']],
+    processEscapes: true,
     processEnvironments: true
-  }，
+  },
   options: {
-    ignoreHtmlClass: ".*|"，
+    ignoreHtmlClass: ".*|",
     processHtmlClass: "arithmatex"
   }
 };
