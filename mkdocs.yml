@@ -1,7 +1,8 @@
 site_name: 碧海舟生的海^_^
 theme:
   name: material
-
+extra_javascript:
+  - js/mathjax.js
 markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
