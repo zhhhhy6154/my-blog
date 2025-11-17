@@ -2,4 +2,8 @@ site_name: 碧海舟生的海^_^
 theme:
   name: material
 
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+
 
