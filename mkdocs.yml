@@ -2,6 +2,11 @@ site_name: 碧海舟生的海^_^
 theme:
   name: material
 extra_javascript:
+  # ↓ ↓ ↓ 这两行是新加的，用来加载 MathJax 库 ↓ ↓ ↓
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+  # ↓ ↓ ↓ 这一行是您之前创建的配置文件，请保留它 ↓ ↓ ↓
   - js/mathjax.js
 markdown_extensions:
   - pymdownx.arithmatex:
