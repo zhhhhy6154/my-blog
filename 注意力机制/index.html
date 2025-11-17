@@ -1,0 +1,876 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="..">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>注意力机制 - 碧海舟生的海^_^</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.618322db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="碧海舟生的海^_^" class="md-header__button md-logo" aria-label="碧海舟生的海^_^" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            碧海舟生的海^_^
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              注意力机制
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="碧海舟生的海^_^" class="md-nav__button md-logo" aria-label="碧海舟生的海^_^" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    碧海舟生的海^_^
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    欢迎来到我的博客！
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    注意力机制
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    注意力机制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        非参注意力池化层
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="非参注意力池化层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nadaraya-watson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nadaraya-Watson核回归
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参数化的注意力池化层
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="参数化的注意力池化层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        注意力分数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="注意力分数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additive-attention-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        加性注意力分数（Additive Attention Score）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaled-dot-product-attention-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        缩放点积注意力分数（Scaled Dot-Product Attention Score）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seq2seq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用注意力机制的seq2seq模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自注意力机制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="自注意力机制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        位置编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transformer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transformer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        非参注意力池化层
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="非参注意力池化层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nadaraya-watson" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nadaraya-Watson核回归
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参数化的注意力池化层
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="参数化的注意力池化层">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        注意力分数
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="注意力分数">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additive-attention-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        加性注意力分数（Additive Attention Score）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaled-dot-product-attention-score" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        缩放点积注意力分数（Scaled Dot-Product Attention Score）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        总结
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#seq2seq" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        使用注意力机制的seq2seq模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        自注意力机制
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="自注意力机制">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        位置编码
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#transformer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transformer
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Transformer">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        基本架构
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="_1">注意力机制</h1>
+<ul>
+<li>卷积、全连接、池化层都只考虑不随意线索</li>
+<li>注意力机制会显式考虑随意线索<ul>
+<li>随意线索被称之为查询（Query）</li>
+<li>每个输入是一个值（Value）</li>
+<li>每个值对应一个不随意线索（Key）</li>
+<li>通过注意力池化层来有偏向性地选择输入</li>
+</ul>
+</li>
+</ul>
+<p><img alt="" src="https://zh-v2.d2l.ai/_images/qkv.svg" /></p>
+<h2 id="_2">非参注意力池化层</h2>
+<ul>
+<li>对于给定数据集 ({(x_i, y_i)}_{i=1}^n)，其中 (x_i ) 是key，(y_i) 是对应的value</li>
+<li>
+<p>平均池化是最简单的方案
+    [
+    f(x) = \frac{1}{n}\sum_{i=1}^n y_i
+    ]</p>
+</li>
+<li>
+<p>加权池化(60年代提出来的Nadaraya-Watson<strong>核回归</strong>估计器)
+    [
+    f(x) = \sum_{i=1}^n {\frac{\text{K}(x, x_i)}{\sum_{j=1}^n \text{K}(x, x_j)}y_i}
+    ]</p>
+</li>
+<li>
+<p>$x$是查询(query)</p>
+</li>
+<li>(K)函数(Kernel)是用来衡量两个变量之间的“距离”的函数。函数值越大，表示两个变量越相似，权重越大。所有权重加起来为1。<ul>
+<li>常用的相似度函数有点积、余弦相似度、高斯核函数等</li>
+</ul>
+</li>
+</ul>
+<h3 id="nadaraya-watson">Nadaraya-Watson核回归</h3>
+<p>使用高斯核函数作为相似度函数
+[K(u) = \frac{1}{\sqrt{2\pi}}\exp(-\frac{u^2}{2})]</p>
+<p>带入
+[f(x) = \sum_{i=1}^n {\frac{\exp(-\frac{(x-x_i)^2}{2})}{\sum_{j=1}^n \exp(-\frac{(x-x_j)^2}{2})}y_i} = \sum_{i=1}^n{\mathrm{softmax}(-\frac{(x-x_i)^2}{2})y_i}]</p>
+<h2 id="_3">参数化的注意力池化层</h2>
+<p>可以在上面的基础上引入可学习参数$w$
+[f(x) =  = \sum_{i=1}^n{\mathrm{softmax}(-\frac{w (x - x_i)^2}{2})y_i}]</p>
+<ul>
+<li>通过学习参数(w)来调整kernel的“宽度”</li>
+</ul>
+<h3 id="_4">总结</h3>
+<p>加权池化可以一般地写作
+[f(x) = \sum_{i=1}^n{\alpha(x,x_i)y_i}]
+这里(\alpha(x,x_i))是一个可微分的注意力权重函数，满足(\sum_{i=1}^n \alpha(x,x_i) = 1)</p>
+<p>哪些是可训练参数，哪些是超参数？
+- 非参注意力池化层没有可训练参数，kernel函数的选择是超参数
+- 参数化注意力池化层中kernel函数中的参数是可训练参数，kernel函数的选择是超参数
+- 查询(x)不是参数，而是输入</p>
+<blockquote>
+<ul>
+<li>核回归有点像KNN（K nearest neighbors，K近邻）？</li>
+<li>核回归和KNN都是基于邻近样本进行预测的非参数方法，但核回归使用加权平均，而KNN使用简单平均。</li>
+</ul>
+</blockquote>
+<h2 id="_5">注意力分数</h2>
+<p>怎么设计注意力权重，怎么评价注意力机制的好坏？</p>
+<p><img alt="" src="https://zh-v2.d2l.ai/_images/attention-output.svg" /></p>
+<p>$$
+f(x) = \sum_{i=1}^n{\alpha(x,x_i)y_i}
+$$
+其中，
+$$
+\alpha(x,x_i) = \mathrm{softmax}(a(x,x_i))
+$$
+这里的(a(x,x_i))称为注意力分数(Attention Score)，表示查询(x)和键(x_i)之间的相似度。
+- 比如上一节中用到的注意力分数
+  [a(x,x_i) = -\frac{(x - x_i)^2}{2}]</p>
+<p>怎么样把query拖展到高维度。</p>
+<ul>
+<li>假设query $\mathbf{q} \in \mathbb{R}^{q}$, key $\mathbf{k}_i \in \mathbb{R}^{k}$, value $\mathbf{v}_i \in \mathbb{R}^{v}$,均为向量，维数可以不一样。</li>
+<li>注意力池化层：
+[f(\mathbf{q},(\mathbf{k}<em>1,\mathbf{v}_1)...,(\mathbf{k}_m,\mathbf{v}_m)) = \sum</em>{i=1}^m{\alpha(\mathbf{q},\mathbf{k}_i)\mathbf{v}_i} \in \mathbb{R}^{v}]</li>
+<li>$\alpha(\mathbf{q},\mathbf{k}_i) = \mathrm{softmax}(a(\mathbf{q},\mathbf{k}_i)) \in \mathbb{R}$</li>
+</ul>
+<blockquote>
+<p>维数不一样，怎么计算注意力分数？</p>
+</blockquote>
+<h3 id="additive-attention-score">加性注意力分数（Additive Attention Score）</h3>
+<p>可学习参数：权重矩阵$\mathbf{W}_q \in \mathbb{R}^{h \times q}$, $\mathbf{W}_k \in \mathbb{R}^{h \times k}$, 向量$\mathbf{w}_a \in \mathbb{R}^{h}$, 偏置向量$\mathbf{b}_a \in \mathbb{R}^{h}$</p>
+<p>[a(\mathbf{q},\mathbf{k}_i) = \mathbf{w}_a^\top \tanh(\mathbf{W}_q \mathbf{q} + \mathbf{W}_k \mathbf{k}_i + \mathbf{b}_a)]
+- 等价于将query和key连结起来，经过一个隐藏大小为h，输出大小为1的MLP，得到注意力分数</p>
+<h3 id="scaled-dot-product-attention-score">缩放点积注意力分数（Scaled Dot-Product Attention Score）</h3>
+<p>假如query和$key$的维数相同，即$q = k = d$
+[a(\mathbf{q},\mathbf{k}_i) = \frac{\mathbf{q}^\top \mathbf{k}_i}{\sqrt{d}}]
+- 计算query和key的点积，然后除以$\sqrt{d}$进行缩放，防止点积值过大导致softmax梯度过小</p>
+<p><strong>向量化版本，n个query和m个key</strong>
+- query矩阵$\mathbf{Q} \in \mathbb{R}^{n \times d}$
+- key矩阵$\mathbf{K} \in \mathbb{R}^{m \times d}$
+- value矩阵$\mathbf{V} \in \mathbb{R}^{m \times v}$
+- 注意力分数：
+[
+\mathbf{A}(\mathbf{Q},\mathbf{K}) = \frac{\mathbf{Q}\mathbf{K}^\top}{\sqrt{d}} \in \mathbb{R}^{n \times m}
+]</p>
+<ul>
+<li>注意力权重：$ f(\mathbf{Q},\mathbf{K},\mathbf{V}) = \mathrm{softmax}(\mathbf{A}(\mathbf{Q},\mathbf{K}))\mathbf{V} \in \mathbb{R}^{n \times v}$</li>
+<li>这里softmax是对每一行进行归一化</li>
+</ul>
+<h3 id="_6">总结</h3>
+<p>两种常见的分数计算
+- 加性注意力分数：将query和key合并起来，通过一个单隐藏层的MLP计算query和key的相似度
+- 缩放点积注意力分数：直接将query和key做内积，并进行缩放。通过点积计算query和key的相似度</p>
+<h2 id="seq2seq">使用注意力机制的seq2seq模型</h2>
+<ul>
+<li>一般的seq2seq模型使用编码器-解码器架构</li>
+<li>编码器将输入序列编码成一个固定长度的向量</li>
+<li>解码器根据该向量生成输出序列</li>
+<li>这种方法在处理长序列时效果不佳，因为固定长度的向量可能无法捕捉输入序列中的所有信息</li>
+<li>注意力机制通过让解码器在每个时间步动态地关注输入序列的不同部分，解决了这个问题</li>
+</ul>
+<p><img alt="" src="https://zh-v2.d2l.ai/_images/seq2seq-attention-details.svg" /></p>
+<ul>
+<li>编码器将输入序列编码成一组key-value对</li>
+<li>解码器在每个时间步生成查询</li>
+<li>通过注意力池化层计算上下文向量</li>
+<li>将上下文向量和解码器隐藏状态结合起来生成输出</li>
+</ul>
+<blockquote>
+<p>【【官方双语】直观解释注意力机制，Transformer的核心 | 【深度学习第6章】】 https://www.bilibili.com/video/BV1TZ421j7Ke/?share_source=copy_web&amp;vd_source=0bc88e723ead812499d06d8ad39e696b</p>
+</blockquote>
+<h2 id="_7">自注意力机制</h2>
+<ul>
+<li>自注意力机制(Self-Attention)是一种特殊的注意力机制，其中查询、键和值都来自同一序列
+<img alt="alt text" src="image.png" /></li>
+</ul>
+<h3 id="_8">位置编码</h3>
+<ul>
+<li>自注意力机制本身不包含位置信息，因此需要引入位置编码(Position Encoding)来捕捉序列中元素的顺序信息</li>
+<li>位置编码可以是固定的（如正弦和余弦函数）
+$ PE_{(pos, 2i)} = \sin(pos / 10000^{2i/d_{model}}) \
+PE_{(pos, 2i+1)} = \cos(pos / 10000^{2i/d_{model}}) $</li>
+</ul>
+<h2 id="transformer">Transformer</h2>
+<h3 id="_9">基本架构</h3>
+<p><img alt="alt text" src="image-1.png" /></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": [], "search": "../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+    
+  </body>
+</html>
