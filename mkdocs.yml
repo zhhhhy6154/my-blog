@@ -8,8 +8,7 @@ extra_javascript:
 
   # ↓ ↓ ↓ 这一行是您之前创建的配置文件，请保留它 ↓ ↓ ↓
   - js/mathjax.js
-markdown_extensions:
-  - pymdownx.arithmatex:
-      generic: true
+
+
 
 
