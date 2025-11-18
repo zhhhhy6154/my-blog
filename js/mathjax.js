@@ -1,15 +1,12 @@
 window.MathJax = {
   tex: {
-    // 我们在这里明确启用了 $ 和 $$
+    // 这些是 MathJax 将在页面上寻找的全部符号
     inlineMath: [['$', '$'], ['\\(', '\\)']],
     displayMath: [['$$', '$$'], ['\\[', '\\]']],
     processEscapes: true,
     processEnvironments: true
-  },
-  options: {
-    ignoreHtmlClass: ".*|",
-    processHtmlClass: "arithmatex"
   }
+  // 注意：那个导致冲突的 'options' 块被我们删除了
 };
 
 document$.subscribe(() => {
